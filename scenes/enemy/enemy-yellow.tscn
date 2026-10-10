@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://bcpd3rmi6qw4w"]
+
+[ext_resource type="Script" uid="uid://c25ur8vu5kbin" path="res://scenes/enemy/enemy_yellow.gd" id="1_17u2p"]
+[ext_resource type="Texture2D" uid="uid://diyj4ks1thivh" path="res://assets/pixel_ship.png" id="1_27bjr"]
+
+[sub_resource type="GDScript" id="GDScript_5nw4p"]
+script/source = "extends Area2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	position.y += 200 * delta
+"
+
+[node name="enemy" type="Node2D" unique_id=771416372]
+script = ExtResource("1_17u2p")
+
+[node name="PixelShip" type="Sprite2D" parent="." unique_id=1263601140]
+rotation = 3.1415927
+texture = ExtResource("1_27bjr")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1309812453]
+rotation = 3.1415927
+script = SubResource("GDScript_5nw4p")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D" unique_id=550447720]
+polygon = PackedVector2Array(-8, -32, -8, -8, -24, -8, -24, 16, -40, 16, -40, 32, 40, 32, 40, 16, 24, 16, 24, -8, 8, -8, 8, -32)
